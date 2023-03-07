@@ -1,0 +1,61 @@
+<odoo>
+    <data>
+        <record id="seq_certificate" model="ir.sequence">
+       <field name="name">certificate Sequence</field>
+       <field name="code">certificate_system.certificate</field>
+       <field name="prefix">TD</field>
+       <field name="padding">5</field>
+       <field name="company_id" eval="False"/>
+   </record>
+        <record id="certificate_action" model="ir.actions.act_window">
+            <field name="name">Certificates</field>
+            <field name="res_model">certificate_system.certificate</field>
+            <field name="view_mode">tree,form,kanban,search,graph</field>
+        </record>
+         <record id="certificate_tree_view" model="ir.ui.view">
+            <field name="name">Certificates tree view</field>
+            <field name="model">certificate_system.certificate</field>
+            <field name="arch" type="xml">
+            <tree>
+                <field name="serial_number"/>
+                <field name="vehicle_type"/>
+                <field name="certificate_type"/>
+                <field name="traffic_department"/>
+                <field name="customer"/>
+                <field name="vehicle_model"/>
+                <field name="brand"/>
+                <field name="price"/>
+                </tree>
+            </field>
+        </record>
+        <record id="certificate_form_view" model="ir.ui.view">
+            <field name="name">certificate form view</field>
+            <field name="model">certificate_system.certificate</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <notebook name="certificate data">
+                            <page string="vehicle data" name="page1">
+                                <group name="vehicle_data">
+                                    <field name="vehicle_type" string="vehicle type"/>
+                                     <field name="vehicle_model" string="vehicle model"/>
+                                    <field name="brand" string="brand"/>
+                                </group>
+                            </page>
+                            <page string="certificate data" name="page2">
+                                <group name="certificate_data">
+                                    <field name="certificate_type" string="certificate type"/>
+                                    <field name="traffic_department" string="traffic department"/>
+                                    <field name="customer" string="customer"/>
+                                    <field name="price" string="price"/>
+                                </group>
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        <menuitem id="certificate_system_menu" name="certificate_system"/>
+        <menuitem id="certificates" name="certificates" sequence="1" parent="certificate_system_menu" action="certificate_action"/>
+    </data>
+</odoo>
